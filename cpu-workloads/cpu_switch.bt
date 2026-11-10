@@ -1,0 +1,25 @@
+#!/usr/bin/env bpftrace
+tracepoint:sched:sched_switch
+/comm == "stress-ng-switc"/
+{
+	$s = args.prev_state;
+	if ($s == 1) {
+		@vol[cpu]++;
+	} else if (($s & 0xff) == 0) {
+		@invol[cpu]++;
+	}
+}
+
+
+END
+{
+    $vol = 0; $invol = 0;
+    for ($kv : @vol)   { $vol   += $kv.1; }
+    for ($kv : @invol) { $invol += $kv.1; }
+
+    printf("voluntary=%d involuntary=%d\n", $vol, $invol);
+    if ($vol > 0) {
+        printf("involuntary per 1000 voluntary: %d\n", $invol * 1000 / $vol);
+    }
+    clear(@vol); clear(@invol);      // suppress the automatic map dump
+}

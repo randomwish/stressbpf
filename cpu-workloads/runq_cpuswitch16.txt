@@ -1,0 +1,17 @@
+cpu_switch.bt:22:70-71: WARNING: signed operands for '/' can lead to undefined behavior (cast to unsigned to silence warning)
+        printf("involuntary per 1000 voluntary: %d\n", $invol * 1000 / $vol);
+                                                                     ~
+stress-ng: info:  [5505] setting to a 20 secs run per stressor
+stress-ng: info:  [5505] dispatching hogs: 16 switch
+stress-ng: metrc: [5505] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: metrc: [5505]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: metrc: [5505] switch         23364690     20.00     17.57     62.00   1168390.88      293631.96
+stress-ng: info:  [5505] skipped: 0
+stress-ng: info:  [5505] passed: 16: switch (16)
+stress-ng: info:  [5505] failed: 0
+stress-ng: info:  [5505] metrics untrustworthy: 0
+stress-ng: info:  [5505] successful run completed in 20.00 secs
+voluntary=44963736 involuntary=1778845
+involuntary per 1000 voluntary: 39
+
+

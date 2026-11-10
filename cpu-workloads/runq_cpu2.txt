@@ -1,0 +1,27 @@
+stress-ng: info:  [4109] setting to a 20 secs run per stressor
+stress-ng: info:  [4109] dispatching hogs: 2 cpu
+stress-ng: metrc: [4109] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: metrc: [4109]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: metrc: [4109] cpu               94687     20.00     39.82      0.01      4734.14        2377.17
+stress-ng: info:  [4109] skipped: 0
+stress-ng: info:  [4109] passed: 2: cpu (2)
+stress-ng: info:  [4109] failed: 0
+stress-ng: info:  [4109] metrics untrustworthy: 0
+stress-ng: info:  [4109] successful run completed in 20.00 secs
+
+
+@preempted: 398
+@runq_wait_us[1]:
+[4, 8)                 2 |@@@@@@@@@@@@@@                                      |
+[8, 16)                7 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[16, 32)               5 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@               |
+
+@runq_wait_us[2]:
+[4, 8)                 9 |@@                                                  |
+[8, 16)               68 |@@@@@@@@@@@@@@@@@@@@                                |
+[16, 32)             173 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[32, 64)              27 |@@@@@@@@                                            |
+[64, 128)             86 |@@@@@@@@@@@@@@@@@@@@@@@@@                           |
+[128, 256)            20 |@@@@@@                                              |
+[256, 512)             1 |                                                    |
+

@@ -1,0 +1,19 @@
+#!/usr/bin/env bpftrace
+tracepoint:sched:sched_switch
+/args.prev_comm == "stress-ng-cpu" && (args.prev_state & 0x7f) == 0/
+{
+    @preempted = count();
+    @ts[args.prev_pid] = nsecs;
+}
+
+tracepoint:sched:sched_switch
+/@ts[args.next_pid]/
+{
+    @runq_wait_us[cpu] = hist((nsecs - @ts[args.next_pid]) / 1000);
+    delete(@ts[args.next_pid]);
+}
+
+END
+{
+    clear(@ts);
+}
